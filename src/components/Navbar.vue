@@ -3,8 +3,8 @@
     <v-app-bar text>
       <v-app-bar-nav-icon @click="drawer = !drawer" class="grey--text"></v-app-bar-nav-icon>
       <v-toolbar-title class="text-uppercase grey--text">
-        <span class="font-weight-light">Todo</span>
-        <span>Ninja</span>
+        <span class="font-weight-light">Agro</span>
+        <span>Tech</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn text color="grey">
