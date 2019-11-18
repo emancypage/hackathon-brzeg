@@ -1,6 +1,6 @@
 <template>
   <nav>
-    <v-app-bar text>
+    <v-app-bar app text>
       <v-app-bar-nav-icon @click="drawer = !drawer" class="grey--text"></v-app-bar-nav-icon>
       <v-toolbar-title class="text-uppercase grey--text">
         <span class="font-weight-light">Agro</span>
@@ -13,7 +13,7 @@
       </v-btn>
     </v-app-bar>
 
-    <v-navigation-drawer absolute v-model="drawer" class="primary">
+    <v-navigation-drawer app absolute v-model="drawer" class="primary">
       <v-list>
         <v-list-item v-for="(link, key) in links" :key="key" router :to="link.route">
           <v-list-item-icon>
@@ -35,9 +35,9 @@
       return {
           drawer: false,
           links: [
-              { icon: 'dashboard', text: 'Dashboard', route: '/' },
-              { icon: 'folder', text: 'My Projects', route: '/projects' },
-              { icon: 'person', text: 'Team', route: '/team' },
+              { icon: 'mdi-camera', text: 'Dodaj zdjęcie', route: '/' },
+              { icon: 'mdi-flower', text: 'Analiza', route: '/analyze' },
+              { icon: 'mdi-information', text: 'O aplikacji', route: '/about' },
           ]
       }
     }
