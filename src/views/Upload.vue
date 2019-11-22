@@ -18,17 +18,19 @@
         name: "Upload",
 
         methods: {
-            onFilePicked(file) {
-              const preview = document.getElementById('preview');
-              const img = document.createElement("img");
-              img.classList.add("obj");
-              img.file = file;
-              preview.appendChild(img);
+          onFilePicked: function (file) {
+            const preview = document.getElementById('preview');
 
-              const reader = new FileReader();
-              reader.onload = (function() { return function(e) { preview.style.backgroundImage = `url(${e.target.result})`; }; })(img);
-              reader.readAsDataURL(file);
-            }
+            const reader = new FileReader();
+            reader.onload = (function () {
+              return function (e) {
+                window.localStorage.setItem('agr_tech_imageToCheck', e.target.result);
+                preview.style.backgroundImage = `url(${e.target.result})`;
+
+              }
+            })();
+            reader.readAsDataURL(file);
+          }
         }
     }
 </script>
