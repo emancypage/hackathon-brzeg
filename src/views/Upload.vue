@@ -12,7 +12,6 @@
     <v-row justify="center">
       <v-btn router to="/analyze" class="mt-4 primary">Idź do analizy</v-btn>
     </v-row>
-
   </div>
 </template>
 
