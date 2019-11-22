@@ -1,9 +1,8 @@
 <template>
-  <div class="upload">
+  <div class="upload pa-4">
     <h1>Dodaj zdjęcie</h1>
     <v-file-input
-            label="File input"
-            filled
+            label="Zdjęcie"
             accept="image/*"
             prepend-icon="mdi-camera"
             capture="camera"
@@ -20,16 +19,27 @@
 
         methods: {
             onFilePicked(file) {
-                const preview = document.getElementById('preview');
+              const preview = document.getElementById('preview');
               const img = document.createElement("img");
               img.classList.add("obj");
               img.file = file;
-              preview.appendChild(img); // Assuming that "preview" is the div output where the content will be displayed.
+              preview.appendChild(img);
 
               const reader = new FileReader();
-              reader.onload = (function(aImg) { return function(e) { aImg.src = e.target.result; }; })(img);
+              reader.onload = (function() { return function(e) { preview.style.backgroundImage = `url(${e.target.result})`; }; })(img);
               reader.readAsDataURL(file);
             }
         }
     }
 </script>
+
+<style lang="scss">
+  #preview {
+    background-size: cover;
+    height: 250px;
+    border: 2px solid #367c2b;
+  }
+  img {
+    width: 100%;
+  }
+</style>
