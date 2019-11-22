@@ -5,7 +5,7 @@
             label="Zdjęcie"
             accept="image/*"
             prepend-icon="mdi-camera"
-            capture="camera"
+            capture="file"
             @change="onFilePicked"
     ></v-file-input>
     <div id="preview"></div>
