@@ -6,7 +6,17 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   strict: true,
   state: {
-    test: "test2"
+    imgData: ""
   },
-  mutations: {},
+  mutations: {
+    updateImgData(state, data) {
+      state.imgData = data;
+    }
+  },
+  actions: {
+    setImg({ commit }, img) {
+      window.localStorage.setItem('agr_tech_imageToCheck', img);
+      commit('updateImgData', img);
+    }
+  }
 });

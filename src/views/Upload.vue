@@ -1,5 +1,5 @@
 <template>
-  <div class="upload pa-4">
+  <div class="upload">
     <h1>Dodaj zdjęcie</h1>
     <v-file-input
             label="Zdjęcie"
@@ -9,7 +9,6 @@
             @change="onFilePicked"
     ></v-file-input>
     <div id="preview"></div>
-
   </div>
 </template>
 
@@ -17,14 +16,20 @@
     export default {
         name: "Upload",
 
+      computed: {
+          imgData() {
+            return this.$store.state.imgData;
+          }
+      },
         methods: {
           onFilePicked: function (file) {
             const preview = document.getElementById('preview');
+            let self = this;
 
             const reader = new FileReader();
             reader.onload = (function () {
               return function (e) {
-                window.localStorage.setItem('agr_tech_imageToCheck', e.target.result);
+                self.$store.dispatch('setImg', e.target.result);
                 preview.style.backgroundImage = `url(${e.target.result})`;
 
               }

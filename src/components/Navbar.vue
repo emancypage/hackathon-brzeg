@@ -13,7 +13,7 @@
       </v-btn>
     </v-app-bar>
 
-    <v-navigation-drawer app absolute v-model="drawer" class="primary">
+    <v-navigation-drawer app temporary v-model="drawer" class="primary">
       <v-list>
         <v-list-item v-for="(link, key) in links" :key="key" router :to="link.route">
           <v-list-item-icon>
