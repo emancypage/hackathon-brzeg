@@ -18,5 +18,10 @@ export default new Vuex.Store({
       window.localStorage.setItem('agr_tech_imageToCheck', img);
       commit('updateImgData', img);
     }
+  },
+  getters: {
+    getImg: (state) => {
+      return state.imgData;
+    }
   }
 });
