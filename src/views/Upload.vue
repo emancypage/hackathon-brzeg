@@ -44,7 +44,7 @@
     },
     mounted() {
       const imgData = window.localStorage.getItem('agr_tech_imageToCheck');
-      if (imgData.length > 0) {
+      if (imgData && imgData.length > 0) {
         const preview = document.getElementById('preview');
         preview.style.backgroundImage = `url(${imgData})`;
       }
