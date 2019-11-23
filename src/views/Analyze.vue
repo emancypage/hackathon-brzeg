@@ -12,7 +12,7 @@
       >
         <v-list-item three-line>
           <v-list-item-content>
-            <v-list-item-title class="display-1">{{ analysisData.diagnosis }}</v-list-item-title>
+            <v-list-item-title class="title">{{ analysisData.diagnosis }}</v-list-item-title>
           </v-list-item-content>
 
           <v-list-item-avatar
@@ -47,6 +47,8 @@
           <p>Składnik aktywny: <b>{{ computedPestiData.col3 }}</b></p>
 
           <v-btn :href='linkToShop+computedSearchString' target="_blank">Zamów</v-btn>
+          <br>
+          <small>Dane dopuszczonych preparatów wg. <a href="https://www.dane.gov.pl/">https://www.dane.gov.pl/</a></small>
         </v-card-text>
 
       </v-card>
