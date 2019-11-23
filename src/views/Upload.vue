@@ -4,6 +4,7 @@
     <v-file-input
             label="Zdjęcie"
             accept="image/*"
+            type="file"
             prepend-icon="mdi-camera"
             capture="filesystem"
             @change="onFilePicked"
