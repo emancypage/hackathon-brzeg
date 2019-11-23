@@ -6,7 +6,6 @@
             accept="image/*"
             type="file"
             prepend-icon="mdi-camera"
-            capture="filesystem"
             @change="onFilePicked"
     ></v-file-input>
     <div id="preview"></div>
