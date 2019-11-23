@@ -6,31 +6,44 @@
 
     <div class="description">
       <v-card
-              class="mx-auto"
+              dark
+              color="#367c2b"
+              class="mx-auto my-2"
       >
         <v-list-item three-line>
           <v-list-item-content>
-            <div class="overline mb-4"></div>
-            <v-list-item-title class="h4">Nazwa choroby / diagnoza</v-list-item-title>
-            <v-list-item-subtitle>Greyhound divisely hello coldly fonwderfully</v-list-item-subtitle>
+            <v-list-item-title class="display-1">{{ analysisData.diagnosis }}</v-list-item-title>
           </v-list-item-content>
 
           <v-list-item-avatar
-                  tile
                   size="50"
-                  color="grey"
-          >80%</v-list-item-avatar>
+                  color="#f2f2f2"
+                  style="color: #000000"
+          >{{ analysisData.probability }}</v-list-item-avatar>
         </v-list-item>
       </v-card>
 
       <v-card
-              color="#385F73"
-              dark
+              color="#f2f2f2"
+              class="my-2"
       >
-        <v-card-title class="headline">Opis diagnozy - tytuł</v-card-title>
+        <v-card-title class="headline">Opis</v-card-title>
 
         <v-card-text>
-          <p>{{analysisData }}</p>
+          <p>{{ analysisData.description }}</p>
+        </v-card-text>
+
+      </v-card>
+
+      <v-card
+              color="#f2f2f2"
+              class="my-2"
+      >
+        <v-card-title class="headline">Leczenie</v-card-title>
+
+        <v-card-text>
+          Środki ochrony roślin
+          <p>Nazwa: <b>{{ pesticide }}</b></p>
         </v-card-text>
 
       </v-card>
@@ -43,18 +56,31 @@
     name: "Analyze",
     data: () => {
       return {
-        analysisData: [],
+        analysisData: {},
       };
     },
     computed: {
       imgData() {
         return this.$store.getters.getImg;
+      },
+      pesticide() {
+          return this.pesticidesData.data.attributes.col2;
       }
     },
     methods: {
       getData() {
           this.$http.get('https://www.dev031.kiratik-devs.de/api/reports?count=1').then( result => {
-              this.analysisData = result.data;
+              this.analysisData = result.data.data[0];
+          }).then( () => {
+              this.getGovPesticidesData();
+          });
+      },
+      getGovPesticidesData() {
+          this.$http.get(this.analysisData.medicines).then( result => {
+              this.pesticidesData = result.data;
+
+              // eslint-disable-next-line no-console
+              console.log(this.pesticidesData);
           });
       }
     },
