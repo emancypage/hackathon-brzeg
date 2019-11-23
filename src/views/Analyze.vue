@@ -45,6 +45,8 @@
           Środki ochrony roślin
           <p>Nazwa: <b>{{ computedPestiData.col2 }}</b></p>
           <p>Składnik aktywny: <b>{{ computedPestiData.col3 }}</b></p>
+
+          <v-btn href="https://sklep-ogrodnik.pl/zakup-produktow-koppert-pm-28.html" target="_blank">Zamów</v-btn>
         </v-card-text>
 
       </v-card>
