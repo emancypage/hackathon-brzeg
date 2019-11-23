@@ -24,6 +24,18 @@
             <v-list-item-title class="white--text">{{ link.text }}</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
+        <v-list-item
+                href="https://hungry-nightingale-e1c6a2.netlify.com"
+                target="_blank"
+        >
+          <v-list-item-icon>
+            <v-icon class="white--text">mdi-view-carousel</v-icon>
+          </v-list-item-icon>
+
+          <v-list-item-content>
+            <v-list-item-title class="white--text">B2B</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
       </v-list>
     </v-navigation-drawer>
   </nav>
