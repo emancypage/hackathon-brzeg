@@ -43,7 +43,8 @@
 
         <v-card-text>
           Środki ochrony roślin
-          <p>Nazwa: <b>{{ pesticide }}</b></p>
+          <p>Nazwa: <b>{{ computedPestiData.col2 }}</b></p>
+          <p>Składnik aktywny: <b>{{ computedPestiData.col3 }}</b></p>
         </v-card-text>
 
       </v-card>
@@ -51,36 +52,40 @@
   </div>
 </template>
 
+<!--"headers_map": {-->
+<!--"col1": "LP",-->
+<!--"col2": "Nazwa środka",-->
+<!--"col3": "Substancja czynna oraz jej zawartość",-->
+<!--"col4": "Numer zezwolenia",-->
+<!--"col5": "Rodzaj środka",-->
+<!--"col6": "Uwagi"-->
+<!--},-->
+
 <script>
   export default {
     name: "Analyze",
     data: () => {
       return {
         analysisData: {},
+        pesticidesData: {}
       };
     },
     computed: {
       imgData() {
         return this.$store.getters.getImg;
       },
-      pesticide() {
-          return this.pesticidesData.data.attributes.col2;
+      computedPestiData() {
+          return this.pesticidesData;
       }
     },
     methods: {
       getData() {
           this.$http.get('https://www.dev031.kiratik-devs.de/api/reports?count=1').then( result => {
               this.analysisData = result.data.data[0];
-          }).then( () => {
-              this.getGovPesticidesData();
-          });
-      },
-      getGovPesticidesData() {
-          this.$http.get(this.analysisData.medicines).then( result => {
-              this.pesticidesData = result.data;
-
-              // eslint-disable-next-line no-console
-              console.log(this.pesticidesData);
+          }).then(() => {
+              this.$http.get(this.analysisData.medicines).then( result => {
+                  this.pesticidesData = result.data.data.attributes;
+              });
           });
       }
     },
