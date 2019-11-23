@@ -46,7 +46,7 @@
           <p>Nazwa: <b>{{ computedPestiData.col2 }}</b></p>
           <p>Składnik aktywny: <b>{{ computedPestiData.col3 }}</b></p>
 
-          <v-btn href="https://sklep-ogrodnik.pl/zakup-produktow-koppert-pm-28.html" target="_blank">Zamów</v-btn>
+          <v-btn :href='linkToShop+computedSearchString' target="_blank">Zamów</v-btn>
         </v-card-text>
 
       </v-card>
@@ -69,7 +69,10 @@
     data: () => {
       return {
         analysisData: {},
-        pesticidesData: {}
+        pesticidesData: {},
+        searchString: '',
+        linkToShop: 'https://agrosimex.pl/?s=',
+          linkToShop2: 'https://www.sklepfarmera.pl/catalogsearch/result/?cat=0&q='
       };
     },
     computed: {
@@ -78,6 +81,9 @@
       },
       computedPestiData() {
           return this.pesticidesData;
+      },
+      computedSearchString() {
+          return this.searchString;
       }
     },
     methods: {
@@ -87,6 +93,7 @@
           }).then(() => {
               this.$http.get(this.analysisData.medicines).then( result => {
                   this.pesticidesData = result.data.data.attributes;
+                  this.searchString = this.pesticidesData.col2;
               });
           });
       }
